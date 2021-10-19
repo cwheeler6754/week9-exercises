@@ -1,0 +1,63 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class House extends React.Component {
+    state = {
+        kitchen: true,
+        bathroom: false,
+        livingRoom: true,
+        bedroom: false
+    }
+
+    kitchen = ( action ) => {
+        this.setState({
+            kitchen: !this.state.kitchen
+        });
+    }
+    bathroom = ( action ) => {
+        this.setState({
+            bathroom: !this.state.bathroom
+        });
+    }
+    livingRoom = ( action ) => {
+        this.setState({
+            livingRoom: !this.state.livingRoom
+        });
+    }
+    bedroom = ( action ) => {
+        this.setState({
+            bedroom: !this.state.bedroom
+        });
+    }
+
+    render(){
+        return(
+            <div>
+                <Button action={this.kitchen}>Kitchen</Button>
+                <p>Kitchen is: {this.state.kitchen ? 'on': 'off'}</p>
+
+                <Button action={this.bathroom}>Bathroom</Button>
+                <p>Bathroom is: {this.state.bathroom ? 'on': 'off'}</p>
+
+                <Button action={this.livingRoom}>Living Room</Button>
+                <p>Living Room is: {this.state.livingRoom ? 'on': 'off'}</p>
+
+                <Button action={this.bedroom}>Bedroom</Button>
+                <p>Bedroom is: {this.state.bedroom ? 'on': 'off'}</p>
+            </div>
+        )
+    }
+}
+
+function Button({ children, action }){
+    return(
+        <button onClick={action}>
+            {children}
+        </button>
+    )
+}
+
+ReactDOM.render(
+    <House />,
+    document.getElementById("root")
+);
